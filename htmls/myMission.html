@@ -86,15 +86,17 @@
     var missions;
     $.get("/misi", (data) => {
         missions = data;
+        var counter = 1
         data.forEach(element => {
-            $("#missionlist").append(`<tr>
-            <td>${element.planId}</td>
+            $("#missionlist").append(`<tr id="plan${element.planId}">
+            <td>${counter}</td>
             <td>${element.planName}</td>
             <td><button onclick="showMission(${element.planId})" class = "btn-show">Show Mission</button></td>
             <td><button onclick="noice(${element.planId})" class="hide" id="hide${element.planId}">X</button></td>
             <td><button onclick="save(${element.planId})" class="hide" id="save${element.planId}">V</button></td>
-            <td><button  onclick="window.location.href="/misi/delete/${element.planId}""">Hapus</button></td>)
+            <td><button  onclick="deletemission(${element.planId})">Hapus</button></td>)
             </tr>`)
+            counter ++;
         }
         );
     });
@@ -143,6 +145,20 @@
 
     function onEachFeature(feature, layer) {
         editableLayers.addLayer(layer);
+    }
+
+    function deletemission(planId){
+        $.ajax({
+            type: "GET",
+            url: "/misi/delete/" + planId,
+            success: function(msg){
+                 alert( "Mission Deleted");
+                 $("#plan" +planId).remove();
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("Something wrong");
+            }
+        });
     }
 </script>
 </html>
