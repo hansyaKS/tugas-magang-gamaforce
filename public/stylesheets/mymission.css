@@ -7,6 +7,30 @@ body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background-color: wheat;
   }
+.map{
+    margin:10px;
+    border: 10px solid red;
+}
+button{
+    background-color: #FC997C;
+    padding: 20px;
+    margin: 5px 0px;
+    border: 2px solid #FC997C;
+    color: aliceblue;
+    border-radius: 2px;
+    
+}
+button:hover {
+    position: relative;
+    top: 1px;
+    background-color: white;
+}
+.listmisi ul{
+    padding: 2px;
+    color: white;
+    background-color: #2E4C6D;
+    
+}
 
 header h1{
 position: relative;
@@ -37,11 +61,17 @@ position: relative;
 }
 .data table{
     text-align: center;
+    align-content: center;
     margin: auto;
     margin-top: 20px;
-    padding: 5px;
+    padding: 20;
     background-color: whitesmoke;
     border-radius: 5px;
+}
+.data tr  {
+    text-align: center;
+    margin: 5px;
+    padding: auto;
 }
 .data ul{
     padding: auto;
@@ -52,4 +82,8 @@ position: relative;
     margin:auto;
     margin-bottom:10px ;
     border-radius: 5px;
+}
+
+footer{
+    height: 300px;
 }

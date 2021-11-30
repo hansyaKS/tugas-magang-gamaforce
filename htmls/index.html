@@ -12,9 +12,9 @@
     </header>
     <form action="/misi" method="post">
         <div class="forminput">
-            <p class="sub">INPUT MISI</p> 
+            <h4 class="sub">INPUT MISI</h4> 
             Nama Misi: <input type="text" name='namaMisi'>
-            <br>
+            <br><br>
             Geo JSON:<input type="text" name="geoJSON">
             <br>
             <button type="submit"> Submit </button>
@@ -23,7 +23,7 @@
     </form>
     
     
-    <div id="map" style="height: 700px;"></div>
+    <div class="map" id="map" style="height: 700px;"></div>
     
     <br>
     <div class="auto">
@@ -32,9 +32,9 @@
     
     <br>
     <div class="listmisi">
-        <h1  >List Misi</h1>
+        <h1>List Misi</h1>
         <br>
-        <ul id='listMisi'></ul>
+        <ul  id='listMisi'></ul>
         
         <button onclick="window.location.href='/mymission'">lihat misi</button>
     </div>
@@ -51,7 +51,7 @@
             data.json().then(resp => {
                 resp.forEach(element => {
                     console.log(element)
-                    $('#listMisi').append(`<li>${element.planName}, <a href="/misi/delete/${element.planId}">Hapus</a></li>`)
+                    $('#listMisi').append(`<li class="listbut">${element.planName}, <button  onclick="window.location.href='/misi/delete/${element.planId}'">Hapus</button></li><br>`)
                 });
             })
         })
@@ -88,4 +88,6 @@
 
 </script>
 </body>
+
+<footer></footer>
 </html>

@@ -10,6 +10,10 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: wheat;
 }
+.map{
+  margin:10px;
+  border: 10px solid red;
+}
 
 .title{
   
@@ -62,10 +66,28 @@ form{
   text-align: center;
   
 }
-.auto button{
+button{
   background-color: #FC997C;
   padding: 20px;
   margin: 5px 0px;
+  border: 2px solid #FC997C;
+  color: aliceblue;
+  border-radius: 2px;
+}
+button:hover {
+  position: relative;
+  top: 1px;
+  background-color: white;
+}
+.listbut{
+  padding: auto;
+  margin-left: 20px;
+}
+.listbut button{
+  padding: 10;
+  margin: auto;
+
+
 }
 .listmisi{
   padding:20px 10px;
@@ -83,4 +105,7 @@ form{
   margin: auto;
   background-color: aqua;
   width: auto;
+}
+footer{
+  height: 300px;
 }
