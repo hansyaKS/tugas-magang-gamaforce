@@ -76,14 +76,26 @@
             console.log(editableLayers.toGeoJSON())
         });
         
+
         function saveToDatabase(){
+        
             let missionName = prompt ("Nama Misi: ");
-            $.post(
-                '/misi', {
+
+            let missionData = {
                     namaMisi:(missionName),
                     geoJSON: JSON.stringify(editableLayers.toGeoJSON())
                 }
-            )
+            $.ajax({
+                type: "POST",
+                url: '/misi',
+                data: missionData,
+                success: function(msg){
+                     alert( "Mission Saved");
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something wrong");
+                }
+            });
         }
 
 </script>
