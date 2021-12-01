@@ -115,14 +115,27 @@
     }
 
     function noice(param){
-        $("#hide" +param).toggleClass("hide")
-        $("#save" +param).toggleClass("hide")
-        $(".btn-show").prop( "disabled", false )
+        
 
-
-        editableLayers.getLayers().forEach(function(layer) {
+        if (JSON.stringify(editableLayers.toGeoJSON()) != missions.find(mission => mission.planId == param).g3wp){
+            if(confirm("You have unsaved changes. Do you want to discard them?")){
+                $("#hide" +param).toggleClass("hide")
+                $("#save" +param).toggleClass("hide")
+                $(".btn-show").prop( "disabled", false )
+                editableLayers.getLayers().forEach(function(layer) {
+                    editableLayers.removeLayer(layer);
+                });
+            }
+        } else{
+            $("#hide" +param).toggleClass("hide")
+            $("#save" +param).toggleClass("hide")
+            $(".btn-show").prop( "disabled", false )
+            editableLayers.getLayers().forEach(function(layer) {
             editableLayers.removeLayer(layer);
         });
+        }
+
+        
     }
 
     function save(param){
@@ -148,7 +161,9 @@
     }
 
     function deletemission(planId){
-        $.ajax({
+
+        if (confirm('You sure want to delete?')) {
+            $.ajax({
             type: "GET",
             url: "/misi/delete/" + planId,
             success: function(msg){
@@ -159,6 +174,10 @@
                 alert("Something wrong");
             }
         });
+        } else {
+          alert("Mission not deleted");
+        }
+        
     }
 </script>
 </html>
